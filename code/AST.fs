@@ -51,3 +51,5 @@ type Program =
     | Command of Command
     | Control of Control
     | Output of Output
+
+type Canvas = Program list

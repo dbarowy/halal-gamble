@@ -123,3 +123,10 @@ let startAndReadInput () =
         formatInput input
     else
         usage ()
+
+
+
+
+
+let displayOutput (output: int) = 
+    printfn "Your result is %d" output
