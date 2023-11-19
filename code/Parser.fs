@@ -5,51 +5,73 @@ open Combinator
 
 
 (*
-    BNF Grammar
-    
-    <program> ::= <command> | <control> | <output>
+   BNF Grammar
 
-    <stock> ::= GOLD | SILVER | AMAZON | TESLA | AMDS | INTEL | MICROSOFT | FACEBOOK | GOOGLE | APPLE...
-    <transactionAmount> ::= <d><number> | <d>
+    <stock> ::= GOLD | SLVR | TSLA
+    <transactionAmount> ::= <d><transactionAmount> | <d>
     <d> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-    <command> ::= buy (<stock>, <transactionAmount>) | sell (<stock>, <transactionAmount>) | initialCapital(<transactionAmount>)
-    <control> ::= start | next | exit
-    <output> ::= graph(<graph>) | report(<report>)
-    <graph> ::= bargraph | timeseries
-    <report> ::= portfolio | statement | analysis
+
+    <command> ::= buy(<stock>, <transactionAmount>) | sell(<stock>, <transactionAmount>) | initialCapital(<transactionAmount>) //Dictionary and Array
+    
+    <line> ::= <command> | <output> 
+    <program> ::= <line> | <line><program>
+
+    <output> ::= output(<graph>)
+    <graph> ::= bargraph | timeseries | portfolio
 *)
+let numberParser = 
+    (pmany1 pdigit |>> (fun digits -> stringify digits |> int))
 
-let stockParser : Parser<Program> = failwith "TODO"
+let GOLDparser = pstr "GOLD" |>> (fun x -> GOLD(x))
+let SLVRParser = pstr "SLVR" |>> (fun x -> SLVR(x))
+let TSLAParser = pstr "TSLA" |>> (fun x -> TSLA(x))
 
-let transactionAmountParser  : Parser<Program>= failwith "TODO"
+let stockParser: Parser<Stock> = GOLDparser <|> SLVRParser <|> TSLAParser
+    
+let buyParser: Parser<Command> =
+        pseq 
+        (pstr "buy(") 
+        (pseq stockParser (pchar ',') (fun (stock, _) -> stock))
+        (pseq numberParser (pchar ')') (fun (amount, _) -> amount))
+        (fun (stock, amount) -> Buy({stock = stock; amount = amount}))
 
-let controlParser : Parser<Program> = failwith "TODO"
+let sellParser: Parser<Command> =
+    pseq 
+        (pstr "sell(") 
+        (pseq stockParser (pchar ',') (fun (stock, _) -> stock))
+        (pseq numberParser (pchar ')') (fun (amount, _) -> amount))
+        (fun (stock, amount) -> Sell({stock = stock; amount = amount}))
+        
 
-let outputParser : Parser<Program> = failwith "TODO"
+//Probably need to use variable to store this value?
+let initialCapitalParser: Parser<Command> = 
+    pbetween 
+        (pstr "initialCapital(") 
+        numberParser 
+        (pchar ')') 
+    |>> (fun _ -> InitialCapital)
 
-let commandParser : Parser<Program> = failwith "TODO"
+let commandParser = buyParser <|> sellParser <|> initialCapitalParser
 
-let programParser : Parser<Program> = commandParser <|> controlParser <|> outputParser
+let bargraphParser = pstr "bargraph" |>> (fun _ -> Bargraph)
+let timeseriesParser = pstr "timeseries" |>> (fun _ -> Timeseries)
+let portfolioParser = pstr "portfolio" |>> (fun _ -> Portfolio)
 
+let graphParser: Parser<Output> = bargraphParser <|> timeseriesParser <|> portfolioParser
 
-let canvasParser =
-    let singleLine = programParser |>> (fun t -> [t])
-    let multipleLines = 
-        pseq
-            singleLine 
-            (pmany0 
-                (pright 
-                    (pstr "\n") 
-                    singleLine
-                )
-            )
-            (fun (l, ls) -> l @ List.concat ls)
-    multipleLines
+let outputParser: Parser<line> = 
+    pbetween 
+        (pstr "output(") (graphParser) (pchar ')') 
+    |>> (fun output -> Output(output))
 
 
+let lineParser: Parser<line> = commandParser <|> outputParser
 
-let grammar = pleft canvasParser peof
+//Do i need to parse newline?
+let programParser: Parser<Program> = 
+    pmany1 lineParser
 
+let grammar = pleft programParser peof
 
 (*
     Parses a string and returns an AST if the string is valid. Otherwise, returns None.
@@ -57,10 +79,13 @@ let grammar = pleft canvasParser peof
     @input: The string to parse.
     @returns: An AST if the string is valid. Otherwise, None.
 *)
-let parse (input: string) : Canvas option =
+let parse (input: string) : Program option =
     let i = prepare input
     match grammar i with
     | Success(ast, _) -> Some ast
-    | Failure(_,_) -> None
-
-
+    | Failure(pos,rule) ->
+        printfn "Invalid expression."
+        let msg = sprintf "Cannot parse input at position %d in rule '%s':" pos rule
+        let diag = diagnosticMessage 20 pos input msg
+        printf "%s" diag
+        None
