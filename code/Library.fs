@@ -12,6 +12,8 @@ let usage () =
     Avaialble stocks: GOLD, SLVR, TSLA\n
     To go to the next year: next\n
     To exit the game: exit\n
+
+    Try running again.
     "
     exit 1
 
@@ -58,7 +60,7 @@ let takeUserInput () =
             takeUserInputHelper (counter + 1) input
         | _, _ -> takeUserInputHelper counter newInput
 
-    (takeUserInputHelper 0 "")
+    (takeUserInputHelper 1 "")
 
 
 
