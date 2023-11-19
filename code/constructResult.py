@@ -1,6 +1,12 @@
+'''
+This python file will take in the parsed data from the parser and construct the result through the evaluator.
+It is uploaded in the git repo for the purpose of testing the parser and evaluator and to show progress.
+'''
+
+
+
 import matplotlib.pyplot as plt
 from matplotlib import style
-import os
 
 style.use('ggplot')
 
@@ -8,36 +14,23 @@ style.use('ggplot')
 rates = {
     #GOLD RATES
     "GOLD20152016": 1.9, "GOLD20152017": 0.1, "GOLD20152018": 0.7, "GOLD20152019": 1.2, "GOLD20152020": 1.3,
-
     "GOLD20162017": 0.3, "GOLD20162018": -0.7, "GOLD20162019": -1.2, "GOLD20162020": -1.3,
-
     "GOLD20172018": -0.7, "GOLD20172019": -1.2, "GOLD20172020": -1.3,
-
     "GOLD20182019": -1.2, "GOLD20182020": -1.3,
-
     "GOLD20192020": -1.3,
-
 
     #SLVR RATES
     "SLVR20152016": 1.9, "SLVR20152018": 0.7, "SLVR20152017": 0.1, "SLVR20152019": 1.2, "SLVR20152020": 1.3,
-
     "SLVR20162017": 0.3, "SLVR20162018": -0.7, "SLVR20162019": -1.2, "SLVR20162020": -1.3,
-
     "SLVR20172018": -0.7, "SLVR20172019": -1.2, "SLVR20172020": -1.3,
-
     "SLVR20182019": -1.2, "SLVR20182020": -1.3,
-
     "SLVR20192020": -1.3,
 
     #TSLA
     "TSLA20152016": 1.9, "TSLA20152018": 0.7, "TSLA20152017": 0.1, "TSLA20152019": 1.2, "TSLA20152020": 1.3,
-
     "TSLA20162017": 0.3, "TSLA20162018": -0.7, "TSLA20162019": -1.2, "TSLA20162020": -1.3,
-
     "TSLA20172018": -0.7, "TSLA20172019": -1.2, "TSLA20172020": -1.3,
-    
     "TSLA20182019": -1.2, "TSLA20182020": -1.3,
-
     "TSLA20192020": -1.3
 }
 

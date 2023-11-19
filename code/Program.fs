@@ -4,9 +4,12 @@ open CS334
 
 
 
-//Adjust for inflation
-// Need dictionary and Array for Command
 
+
+
+/////TO IMPLEMENT
+/// - Adjust for inflation
+/// - Allow initialcapital only one time
 
 [<EntryPoint>]
 let main argv =

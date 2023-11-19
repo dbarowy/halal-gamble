@@ -22,9 +22,9 @@ open Combinator
 let numberParser = 
     (pmany1 pdigit |>> (fun digits -> stringify digits |> int))
 
-let GOLDparser = pstr "GOLD" |>> (fun x -> GOLD(x))
-let SLVRParser = pstr "SLVR" |>> (fun x -> SLVR(x))
-let TSLAParser = pstr "TSLA" |>> (fun x -> TSLA(x))
+let GOLDparser = pstr "GOLD" |>> (fun _ -> GOLD)
+let SLVRParser = pstr "SLVR" |>> (fun _ -> SLVR)
+let TSLAParser = pstr "TSLA" |>> (fun _ -> TSLA)
 
 let stockParser: Parser<Stock> = GOLDparser <|> SLVRParser <|> TSLAParser
     
@@ -59,13 +59,13 @@ let portfolioParser = pstr "portfolio" |>> (fun _ -> Portfolio)
 
 let graphParser: Parser<Output> = bargraphParser <|> timeseriesParser <|> portfolioParser
 
-let outputParser: Parser<line> = 
+let outputParser: Parser<Line> = 
     pbetween 
         (pstr "output(") (graphParser) (pchar ')') 
     |>> (fun output -> Output(output))
 
 
-let lineParser: Parser<line> = commandParser <|> outputParser
+let lineParser: Parser<Line> = commandParser <|> outputParser
 
 //Do i need to parse newline?
 let programParser: Parser<Program> = 

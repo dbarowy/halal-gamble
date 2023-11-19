@@ -17,21 +17,16 @@ module AST
     <graph> ::= bargraph | timeseries | portfolio
 *)
 
-type Stock = 
-    | GOLD of string
-    | SLVR of string
-    | TSLA of string
+type Stock = GOLD | SLVR | TSLA
 
 type Buy = {stock: Stock; amount: int}
 type Sell = {stock: Stock; amount: int}
-type InitialCapital = InitialCapital of int
+type InitialCapital = int
 
 type Command = Buy | Sell | InitialCapital
 
 type Output = Bargraph | Timeseries | Portfolio
 
-type line =
-    | Command of Command
-    | Output of Output
+type Line = Command of Command | Output of Output
 
-type Program = line list
+type Program = Line list
