@@ -5,7 +5,14 @@ open System
     Prints the usage message and exits the program with exit code 1.
 *)
 let usage () = 
-    printfn "foo"
+    printfn "Usage: start\n
+    Select how much mone you want to invest: initialCapital(<howMuchMoneyYouWantToStartWith>)
+    To perform actions: buy(<stockName>, <howMuchToBoy>) or sell(<stockName>, <howMuchToSell>)\n
+    To see outputs: output(<graph>)\t<graph> is either bargraph or timeseries or portfolio\n
+    Avaialble stocks: GOLD, SLVR, TSLA\n
+    To go to the next year: next\n
+    To exit the game: exit\n
+    "
     exit 1
 
 
