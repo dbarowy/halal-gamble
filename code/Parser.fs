@@ -1,58 +1,47 @@
 module Parser
-
 open AST
 open Combinator
 
 
-(*
-   BNF Grammar
-
-    <stock> ::= GOLD | SLVR | TSLA
-    <transactionAmount> ::= <d><transactionAmount> | <d>
-    <d> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-
-    <command> ::= buy(<stock>, <transactionAmount>) | sell(<stock>, <transactionAmount>) | initialCapital(<transactionAmount>) //Dictionary and Array
-    
-    <line> ::= <command> | <output> 
-    <program> ::= <line> | <line><program>
-
-    <output> ::= output(<graph>)
-    <graph> ::= bargraph | timeseries | portfolio
-*)
 let numberParser = 
     (pmany1 pdigit |>> (fun digits -> stringify digits |> int))
 
-let GOLDparser = pstr "GOLD" |>> (fun _ -> GOLD)
-let SLVRParser = pstr "SLVR" |>> (fun _ -> SLVR)
-let TSLAParser = pstr "TSLA" |>> (fun _ -> TSLA)
+let GOLDparser = pstr "GOLD" |>> (fun x -> x)
+let SLVRParser = pstr "SLVR" |>> (fun x -> x)
+let TSLAParser = pstr "TSLA" |>> (fun x -> x)
 
-let stockParser: Parser<Stock> = GOLDparser <|> SLVRParser <|> TSLAParser
+let stockParser: Parser<string> = GOLDparser <|> SLVRParser <|> TSLAParser
     
-let buyParser: Parser<Command> =
-        pseq 
-        (pstr "buy(") 
-        (pseq stockParser (pchar ',') (fun (stock, _) -> stock))
-        (pseq numberParser (pchar ')') (fun (amount, _) -> amount))
-        (fun (stock, amount) -> Buy({stock = stock; amount = amount}))
+    
+let buyParser =
+        pseq
+            (pright (pstr "buy(")  stockParser)
+            (pbetween (pchar ',') numberParser (pchar ')'))
+            (fun (stock, amount) -> BuyCommand({stock = stock; buy = amount}))
 
-let sellParser: Parser<Command> =
-    pseq 
-        (pstr "sell(") 
-        (pseq stockParser (pchar ',') (fun (stock, _) -> stock))
-        (pseq numberParser (pchar ')') (fun (amount, _) -> amount))
-        (fun (stock, amount) -> Sell({stock = stock; amount = amount}))
-        
+let sellParser =
+    pseq
+        (pright (pstr "sell(")  stockParser)
+            (pbetween (pchar ',') numberParser (pchar ')'))
+            (fun (stock, amount) -> SellCommand({stock = stock; sell = amount}))
 
 //Probably need to use variable to store this value?
-let initialCapitalParser: Parser<Command> = 
+let initialCapitalParser =
     pbetween 
-        (pstr "initialCapital(") 
-        numberParser 
-        (pchar ')') 
-    |>> (fun _ -> InitialCapital)
+        (pstr "initialcapital(") 
+        (numberParser)
+        (pchar ')')
+        |>> (fun v -> InitialCapitalCommand({initial = "INITIAL"; amount = v}))
 
-let commandParser = buyParser <|> sellParser <|> initialCapitalParser
+    
 
+let commandParser: Parser<Line> = 
+    buyParser <|> sellParser <|> initialCapitalParser
+    |>> (fun x -> Command(x))
+
+
+
+//Make t a string, booean tuple? and then use lab8 strategy 
 let bargraphParser = pstr "bargraph" |>> (fun _ -> Bargraph)
 let timeseriesParser = pstr "timeseries" |>> (fun _ -> Timeseries)
 let portfolioParser = pstr "portfolio" |>> (fun _ -> Portfolio)
@@ -64,12 +53,18 @@ let outputParser: Parser<Line> =
         (pstr "output(") (graphParser) (pchar ')') 
     |>> (fun output -> Output(output))
 
-
+//Prolly parse new ine here? How about the last line in the string? force it in ibrary.fs?
 let lineParser: Parser<Line> = commandParser <|> outputParser
 
 //Do i need to parse newline?
 let programParser: Parser<Program> = 
-    pmany1 lineParser
+    let singleLineParser = lineParser |>> (fun t -> [t])
+    let multiLineParser =
+        pseq
+            singleLineParser
+            (pmany0 singleLineParser)
+            (fun (l,ls) -> l @ List.concat ls) 
+    multiLineParser
 
 let grammar = pleft programParser peof
 

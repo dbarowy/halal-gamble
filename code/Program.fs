@@ -16,7 +16,7 @@ let main argv =
 
 
     let input = startAndReadInput ()
-    //printfn "%s" input
+    printfn "%s" input
 
 
     
