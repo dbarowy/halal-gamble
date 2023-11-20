@@ -1,21 +1,24 @@
 module Evaluator
 open AST
 
+
+//sprintf "\"%sB\": %d, " (stock.ToString()) amount
+//Have not yet put the YEAR of transaction inside the string
 let evalBuy (buy: Buy): string =
     let stock = buy.stock
     let amount = buy.buy
-    sprintf "\"%sB\": -%d, " (stock.ToString()) amount
+    sprintf "\"%sB\": %d, " (stock.ToString()) amount
 
 
 let evalSell (sell: Sell): string = 
     let stock = sell.stock
     let amount = sell.sell
-    sprintf "\"%sS\": -%d, " (stock.ToString()) amount
+    sprintf "\"%sS\": %d, " (stock.ToString()) amount
 
 
 
-let evalInitialCapital (capital: InitialCapital): string =
-    sprintf "initial = %A\n\nprogram = {\n" capital
+let evalInitialCapital (initial: InitialCapital): string =
+    sprintf "initial = %A\n\nprogram = {\n" initial
 
 let evalCommand (command: Command): string =
     match command with

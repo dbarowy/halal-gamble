@@ -17,22 +17,34 @@ module AST
     <graph> ::= bargraph | timeseries | portfolio
 *)
 
+
+
+
+//Probably want to put year as a field too?? Or else how do i keep track of when transaction was made?
 type Buy = {stock: string; buy: int}
 type Sell = {stock: string; sell: int}
 type InitialCapital = {initial: string; amount: int}
+
 type Command = 
     | BuyCommand of Buy
     | SellCommand of Sell
     | InitialCapitalCommand of InitialCapital
     
 
+
+
 type Bargraph = string
 type Timeseries = string
 type Portfoio = string
-type Output = Bargraph | Timeseries | Portfolio
+
+type Output = 
+    |Bargraph 
+    |Timeseries 
+    |Portfolio
+
+
 
 type Line = Command of Command | Output of Output
-
 type Program = Line list
 
 

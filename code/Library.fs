@@ -46,7 +46,7 @@ let takeUserInput () =
     let rec takeUserInputHelper (counter : int) (input : string) = 
 
         let userInput = Console.ReadLine()
-        let newInput = input + userInput + "\n"
+        let newInput = input + userInput // + "\n"
 
         match counter, userInput with
         | 5, _ -> 
@@ -73,9 +73,10 @@ let takeUserInput () =
 *)
 let removeWhitespace (input: string) : string =
     input 
-    |> Seq.filter (fun c -> not (System.Char.IsWhiteSpace(c)) || c = '\n') 
+    |> Seq.filter (fun c -> not (System.Char.IsWhiteSpace(c)))// || c = '\n') 
     |> Seq.toArray 
     |> String
+
 
 
 

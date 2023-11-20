@@ -5,11 +5,15 @@ open CS334
 
 
 
+(*
+TO IMPLEMENT notes
+
+- Adjust for inflation
+- Allow initialcapital only one time
+- Make sure users dont sell more than they buy
+*)
 
 
-/////TO IMPLEMENT
-/// - Adjust for inflation
-/// - Allow initialcapital only one time
 
 [<EntryPoint>]
 let main argv =
@@ -17,18 +21,38 @@ let main argv =
 
     let input = startAndReadInput ()
     // printfn "%s" input
+    // 0
 
 
-    
+
+
+
+
 
     match parse input with
     | Some ast ->
-        let pythonCode = evaluate input
-        displayOutput pythonCode
+        printfn "%A" ast
         0
         
     | None -> 
         printfn "Invalid Stock Transations, please try again."
         1
+
+    // match parse input with
+    // | Some ast ->
+    //     let pythonCode = evaluate input
+    //     displayOutput pythonCode
+    //     0
+        
+    // | None -> 
+    //     printfn "Invalid Stock Transations, please try again."
+    //     1
     
 
+(*
+initialcapital(100) 
+buy(gold,50)  
+next
+sell(gold,50)
+exit
+*)
