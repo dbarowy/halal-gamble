@@ -3,25 +3,25 @@ open AST
 
 let evalBuy (buy: Buy): string =
     let stock = buy.stock
-    let amount = buy.amount
+    let amount = buy.buy
     sprintf "\"%sB\": -%d, " (stock.ToString()) amount
 
 
 let evalSell (sell: Sell): string = 
     let stock = sell.stock
-    let amount = sell.amount
+    let amount = sell.sell
     sprintf "\"%sS\": -%d, " (stock.ToString()) amount
 
 
 
 let evalInitialCapital (capital: InitialCapital): string =
-    sprintf "initial = %d\n\nprogram = {\n" capital
+    sprintf "initial = %A\n\nprogram = {\n" capital
 
 let evalCommand (command: Command): string =
     match command with
-    | Buy buy -> evalBuy buy
-    | Sell sell -> evalSell sell
-    | InitialCapital capital -> evalInitialCapital capital
+    | BuyCommand buy -> evalBuy buy
+    | SellCommand sell -> evalSell sell
+    | InitialCapitalCommand capital -> evalInitialCapital capital
 
 
 let evalOutput (output: Output): string = 

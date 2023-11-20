@@ -16,18 +16,19 @@ let main argv =
 
 
     let input = startAndReadInput ()
-    printfn "%s" input
+    // printfn "%s" input
 
 
     
 
-    // match parse input with
-    // | Some ast ->
-    //     displayOutput (evaluate input)
-    //     0
+    match parse input with
+    | Some ast ->
+        let pythonCode = evaluate input
+        displayOutput pythonCode
+        0
         
-    // | None -> 
-    //     printfn "Invalid Stock Transations, please try again."
-    //     1
-    0
+    | None -> 
+        printfn "Invalid Stock Transations, please try again."
+        1
+    
 
