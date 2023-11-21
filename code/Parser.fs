@@ -10,30 +10,69 @@ let GOLDparser = pstr "gold" |>> (fun x -> x)
 let SLVRParser = pstr "slvr" |>> (fun x -> x)
 let TSLAParser = pstr "tsla" |>> (fun x -> x)
 
-let stockParser: Parser<string> = GOLDparser <|> SLVRParser <|> TSLAParser
+let stockParser: Parser<string> = 
+    (GOLDparser <|> SLVRParser <|> TSLAParser) 
+    |>> (fun x -> x |> string)
     
-    
-let buyParser =
-        pseq
-            (pright (pstr "buy(")  stockParser)
-            (pbetween (pchar ',') numberParser (pchar ')'))
-            (fun (stock, amount) -> BuyCommand({stock = stock; buy = amount}))
 
-let sellParser =
-    pseq
-        (pright (pstr "sell(")  stockParser)
-            (pbetween (pchar ',') numberParser (pchar ')'))
-            (fun (stock, amount) -> SellCommand({stock = stock; sell = amount}))
+let buyParser : Parser<Command> =
+    pseq 
+        (pright (pstr "buy(") stockParser) 
+        (pseq 
+            (pbetween (pchar ',') numberParser (pchar ','))
+            (pleft numberParser (pchar ')'))
+            (fun (amount, year) -> (amount, year)))
+        (fun (stock, (amount, year)) -> BuyCommand({ stock = stock; buy = amount; year = year }))
+
+let sellParser : Parser<Command> =
+    pseq 
+        (pright (pstr "sell(") stockParser) 
+        (pseq 
+            (pbetween (pchar ',') numberParser (pchar ','))
+            (pleft numberParser (pchar ')'))
+            (fun (amount, year) -> (amount, year)))
+        (fun (stock, (amount, year)) -> SellCommand({ stock = stock; sell = amount; year = year }))
+
+
+let initialCapitalParser : Parser<Command> =
+    let amountAndYearParser = 
+        pseq
+            (pbetween
+                (pstr "initialcapital(") 
+                (numberParser)
+                (pchar ','))
+            (pleft numberParser (pchar ')'))
+    amountAndYearParser (fun (amount, year) -> InitialCapitalCommand({initial = "INITIAL"; amount = amount; year = year}))
+
+
+    // pseq stock number (fun (stock, number) -> BuyCommand({stock = stock; buy = number; year = 0}))
+
+
+    // pseq stock (pseq number year) (fun (stock, (number, year)) -> BuyCommand({stock = stock; buy = number; year = year}))
+    // pseq
+    //     (pright pstr "buy(" stockParser)
+    //     (pbetween (pchar ',') numberParser  (pchar ','))
+    //     (pleft yearParser (pstr ")"))
+    //     (fun (stock, amount, year) -> BuyCommand({stock = stock; buy = amount; year = year}))
+
+// let sellParser =
+//     pseq
+//         (pright (pstr "sell(")  stockParser)
+//         (pbetween (pchar ',') numberParser (pchar ','))
+//         (pleft yearParser (pchar ')'))
+//         (fun (stock, amount, year) -> SellCommand({stock = stock; sell = amount; year = year}))
+
+
 
 //Probably need to use variable to store this value?
-let initialCapitalParser =
-    pbetween 
-        (pstr "initialcapital(") 
-        (numberParser)
-        (pchar ')')
-        |>> (fun v -> InitialCapitalCommand({initial = "INITIAL"; amount = v}))
+// let initialCapitalParser =
+//     pbetween 
+//         (pstr "initialcapital(") 
+//         (numberParser)
+//         (pchar ')')
+//         |>> (fun v -> InitialCapitalCommand({initial = "INITIAL"; amount = v}))
 
-    
+
 
 let commandParser: Parser<Line> = 
     buyParser <|> sellParser <|> initialCapitalParser

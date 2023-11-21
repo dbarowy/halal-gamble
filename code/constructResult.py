@@ -61,12 +61,9 @@ output = set()
 
 #------------------INPUT VARIABLES FROM PARSING------------------#
 initial = 1000
-
 '''
 GOLD2016B = bought 40 dollars woth of gold in 2016
 [B = bought, S = sold]
-
-
 '''
 program = {
     "GOLD2016B": 40, #bought 40 dollars woth of gold in 2016 
@@ -83,7 +80,8 @@ program = {
     "bargraph": True,
     "timeseries": True
 }
-'''Keep in mind that F# dictionary is not the same notation as python dictionary. Might need string manipulation to get the key and value'''
+'''REMEMBER TASHHHH ->>>>  F# dicts is not the same notation as python dictionary. Might need string manipulation to get the key and value! ooorrrr
+maybe just use the evaluator to manipulate the string as python readable'''
 
 #------------------ALL THE MATH------------------#
 

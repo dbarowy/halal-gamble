@@ -8,7 +8,7 @@ module AST
     <transactionAmount> ::= <d><transactionAmount> | <d>
     <d> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
-    <command> ::= buy(<stock>, <transactionAmount>) | sell(<stock>, <transactionAmount>) | initialCapital(<transactionAmount>) //Dictionary and Array
+    <command> ::= buy(<stock>, <transactionAmount>, <year>) | sell(<stock>, <transactionAmount>, <year>) | initialCapital(<transactionAmount>) //Dictionary and Array
     
     <line> ::= <command> | <output> 
     <program> ::= <line> | <line><program>
@@ -20,19 +20,16 @@ module AST
 
 
 
-//Probably want to put year as a field too?? Or else how do i keep track of when transaction was made?
-type Buy = {stock: string; buy: int}
-type Sell = {stock: string; sell: int}
-type InitialCapital = {initial: string; amount: int}
+//Probably want to put year as a field too?? Or else how do i keep track of when transaction was made? Proly in library while calculating years
+type Buy = {stock: string; buy: int; year: int}
+type Sell = {stock: string; sell: int; year: int}
+type InitialCapital = {initial: string; amount: int; year: int}
 
 type Command = 
     | BuyCommand of Buy
     | SellCommand of Sell
     | InitialCapitalCommand of InitialCapital
     
-
-
-
 type Bargraph = string
 type Timeseries = string
 type Portfoio = string
@@ -42,17 +39,21 @@ type Output =
     |Timeseries 
     |Portfolio
 
-
-
 type Line = Command of Command | Output of Output
 type Program = Line list
 
 
-
-
 (*
-initialcapital(100) -> InitialCapital{initial = "INITIAL"; amount = 100}
-sell(TSLA, 40)
+initialcapital(100)
+sell(tsla, 40)
+next
+buy(gold,100)
+sell(tsla,40)
+next
+next
+next
+buy(slvr,40)
+exit
 output(portfolio)
 output(bargraph)
 exit

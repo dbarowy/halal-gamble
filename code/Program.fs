@@ -20,7 +20,7 @@ let main argv =
 
 
     let input = startAndReadInput ()
-    // printfn "%s" input
+    printfn "%s" input
     // 0
 
 
@@ -54,5 +54,7 @@ initialcapital(100)
 buy(gold,50)  
 next
 sell(gold,50)
+next
+output(bargraph)
 exit
 *)
