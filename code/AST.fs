@@ -18,9 +18,6 @@ module AST
 *)
 
 
-
-
-//Probably want to put year as a field too?? Or else how do i keep track of when transaction was made? Proly in library while calculating years
 type Buy = {stock: string; buy: int; year: int}
 type Sell = {stock: string; sell: int; year: int}
 type InitialCapital = {initial: string; amount: int; year: int}

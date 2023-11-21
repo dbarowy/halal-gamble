@@ -20,8 +20,9 @@ let main argv =
 
 
     let input = startAndReadInput ()
-    printfn "%s" input
-    // 0
+    // printfn "%s" input
+
+    printAST input
 
 
 
@@ -29,19 +30,13 @@ let main argv =
 
 
 
-    match parse input with
-    | Some ast ->
-        printfn "%A" ast
-        0
-        
-    | None -> 
-        printfn "Invalid Stock Transations, please try again."
-        1
+    
 
     // match parse input with
     // | Some ast ->
-    //     let pythonCode = evaluate input
-    //     displayOutput pythonCode
+    //     let mathcode = evaluate input
+    //     let calculatedOutput = calculate mathcode
+    //     displayOutput calculatedOutput
     //     0
         
     // | None -> 

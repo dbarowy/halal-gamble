@@ -45,64 +45,46 @@ let initialCapitalParser : Parser<Command> =
     amountAndYearParser (fun (amount, year) -> InitialCapitalCommand({initial = "INITIAL"; amount = amount; year = year}))
 
 
-    // pseq stock number (fun (stock, number) -> BuyCommand({stock = stock; buy = number; year = 0}))
-
-
-    // pseq stock (pseq number year) (fun (stock, (number, year)) -> BuyCommand({stock = stock; buy = number; year = year}))
-    // pseq
-    //     (pright pstr "buy(" stockParser)
-    //     (pbetween (pchar ',') numberParser  (pchar ','))
-    //     (pleft yearParser (pstr ")"))
-    //     (fun (stock, amount, year) -> BuyCommand({stock = stock; buy = amount; year = year}))
-
-// let sellParser =
-//     pseq
-//         (pright (pstr "sell(")  stockParser)
-//         (pbetween (pchar ',') numberParser (pchar ','))
-//         (pleft yearParser (pchar ')'))
-//         (fun (stock, amount, year) -> SellCommand({stock = stock; sell = amount; year = year}))
-
-
-
-//Probably need to use variable to store this value?
-// let initialCapitalParser =
-//     pbetween 
-//         (pstr "initialcapital(") 
-//         (numberParser)
-//         (pchar ')')
-//         |>> (fun v -> InitialCapitalCommand({initial = "INITIAL"; amount = v}))
-
-
-
 let commandParser: Parser<Line> = 
     buyParser <|> sellParser <|> initialCapitalParser
     |>> (fun x -> Command(x))
 
 
 
-let bargraphParser = pstr "bargraph" |>> (fun _ -> Bargraph)
-let timeseriesParser = pstr "timeseries" |>> (fun _ -> Timeseries)
-let portfolioParser = pstr "portfolio" |>> (fun _ -> Portfolio)
+let bargraphParser = 
+    pleft
+        (pstr "bargraph,")
+        numberParser
+        |>> (fun _ -> Bargraph)
+
+
+let timeseriesParser = 
+    pleft
+        (pstr "timeseries,")
+        numberParser
+        |>> (fun _ -> Timeseries)
+
+
+let portfolioParser = 
+    pleft
+        (pstr "portfolio,")
+        numberParser
+        |>> (fun _ -> Portfolio)
+
 
 let graphParser: Parser<Output> = bargraphParser <|> timeseriesParser <|> portfolioParser
+
 
 let outputParser: Parser<Line> = 
     pbetween 
         (pstr "output(") (graphParser) (pchar ')') 
     |>> (fun output -> Output(output))
 
-//Prolly parse new line here? How about the last line in the string? force it in Library.fs?
+
+// We don't worry about parsing newline (/n) since we are stripping all new lines from the input text
 let lineParser: Parser<Line> = commandParser <|> outputParser
 
-//Do i need to parse newline?
 
-//yes
-//pmany1 (p1 <|> p2)
-//for this case (peof <|> (pright pnewline peof) 
-
-
-//no - remove whitespace
-//builtin f# System.String.Join("\n", lines)
 let programParser: Parser<Program> = 
     let singleLineParser = lineParser |>> (fun t -> [t])
     let multiLineParser =
@@ -138,3 +120,14 @@ let parse (input: string) : Program option =
         let diag = diagnosticMessage 20 pos input msg
         printf "%s" diag
         None
+
+
+let printAST (input : string) = 
+    match parse input with
+    | Some ast ->
+        printfn "%A" ast
+        0
+        
+    | None -> 
+        printfn "Invalid Stock Transations, please try again."
+        1
