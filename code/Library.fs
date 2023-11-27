@@ -5,7 +5,16 @@ open System
     Prints the usage message and exits the program with exit code 1.
 *)
 let usage () = 
-    printfn "foo"
+    printfn "Usage: start\n
+    Select how much mone you want to invest: initialCapital(<howMuchMoneyYouWantToStartWith>)
+    To perform actions: buy(<stockName>, <howMuchToBoy>) or sell(<stockName>, <howMuchToSell>)\n
+    To see outputs: output(<graph>)\t<graph> is either bargraph or timeseries or portfolio\n
+    Avaialble stocks: GOLD, SLVR, TSLA\n
+    To go to the next year: next\n
+    To exit the game: exit\n
+
+    Try running again.
+    "
     exit 1
 
 
@@ -27,34 +36,6 @@ let printStartMessage () =
 
 
 
-(*
-    Takes multiline user input from the console 5 times and returns it as a string. If user types "exit" at any time, the function returns the input.
-    If users types "next" the counter is increased by 1 and the function is called recursively.
-
-    @return the user input in string format
-*)
-let takeUserInput () = 
-    let rec takeUserInputHelper (counter : int) (input : string) = 
-
-        let userInput = Console.ReadLine()
-        let newInput = input + userInput + "\n"
-
-        match counter, userInput with
-        | 5, _ -> 
-            printfn "You have reached the end of the game. Your result is being generated."
-            input
-        | _, "exit" -> 
-            printfn "You have exited the game. Your result is being generated."
-            input
-        | _, "next" -> 
-            printfn "You are now in %d" (2016 + counter)
-            takeUserInputHelper (counter + 1) input
-        | _, _ -> takeUserInputHelper counter newInput
-
-    (takeUserInputHelper 0 "")
-
-
-
 
 (*
     Removes all whitespace characters from a given string.
@@ -64,9 +45,10 @@ let takeUserInput () =
 *)
 let removeWhitespace (input: string) : string =
     input 
-    |> Seq.filter (fun c -> not (System.Char.IsWhiteSpace(c)) || c = '\n') 
+    |> Seq.filter (fun c -> not (System.Char.IsWhiteSpace(c)))// || c = '\n' 
     |> Seq.toArray 
     |> String
+
 
 
 
@@ -91,6 +73,41 @@ let toLower (input: string) : string =
 *)
 let formatInput (input: string) : string =
     input |> removeWhitespace |> toLower
+
+
+
+
+(*
+    Takes multiline user input from the console 5 times and returns it as a string. If user types "exit" at any time, the function returns the input.
+    If users types "next" the counter is increased by 1 and the function is called recursively.
+
+    @return the user input in string format
+*)
+let takeUserInput () = 
+    let rec takeUserInputHelper (input : string) (year: int) = 
+
+        let userInput = Console.ReadLine()
+        let formattedInput = formatInput userInput
+        let newInput = input + formattedInput // + "\n"
+
+        match userInput, year with
+        | _, 2020 -> 
+            printfn "You have reached the end of the game. Your result is being generated."
+            input
+        | "exit", _ -> 
+            printfn "You have exited the game. Your result is being generated."
+            input
+        | "next", _ -> 
+            printfn "You are now in %d" (year + 1)
+            takeUserInputHelper input (year + 1)
+        | _, y ->
+            let yearAddedInput = ( newInput[0..(newInput.Length - 2)] + "," + string(year) + ")" )
+            takeUserInputHelper  yearAddedInput y
+
+    (takeUserInputHelper "" 2016)
+
+
+
 
 
 

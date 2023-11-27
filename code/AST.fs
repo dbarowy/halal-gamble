@@ -2,54 +2,56 @@ module AST
 
 
 (*
-    BNF Grammar
-    
-    <program> ::= <command> | <control> | <output>
+   BNF Grammar
 
-    <stock> ::= GOLD | SILVER | AMAZON | TESLA | AMDS | INTEL | MICROSOFT | FACEBOOK | GOOGLE | APPLE...
-    <transactionAmount> ::= <d><number> | <d>
+    <stock> ::= GOLD | SLVR | TSLA
+    <transactionAmount> ::= <d><transactionAmount> | <d>
     <d> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-    <command> ::= buy (<stock>, <transactionAmount>) | sell (<stock>, <transactionAmount>) | initialCapital(<transactionAmount>)
-    <control> ::= start | next | exit
-    <output> ::= graph(<graph>) | report(<report>)
-    <graph> ::= bargraph | timeseries
-    <report> ::= portfolio | statement | analysis
+
+    <command> ::= buy(<stock>, <transactionAmount>, <year>) | sell(<stock>, <transactionAmount>, <year>) | initialCapital(<transactionAmount>) //Dictionary and Array
+    
+    <line> ::= <command> | <output> 
+    <program> ::= <line> | <line><program>
+
+    <output> ::= output(<graph>)
+    <graph> ::= bargraph | timeseries | portfolio
 *)
 
-type Stock = 
-    | GOLD
-    | SILVER
-    | AMAZON
-    | TESLA
-    | AMD
-    | INTEL
-    | MICROSOFT
-    | FACEBOOK
-    | GOOGLE
-    | APPLE
 
-type TransactionAmount = TransactionAmount of int
+type Buy = {stock: string; buy: int; year: int}
+type Sell = {stock: string; sell: int; year: int}
+type InitialCapital = {initial: string; amount: int; year: int}
 
-type Command =
-    | Buy of Stock * TransactionAmount
-    | Sell of Stock * TransactionAmount
-    | InitialCapital of TransactionAmount
+type Command = 
+    | BuyCommand of Buy
+    | SellCommand of Sell
+    | InitialCapitalCommand of InitialCapital
+    
+type Bargraph = string
+type Timeseries = string
+type Portfoio = string
 
-type Control =
-    | Next
-    | Exit
+type Output = 
+    |Bargraph 
+    |Timeseries 
+    |Portfolio
 
-type Graph = BarGraph | TimeSeries
+type Line = Command of Command | Output of Output
+type Program = Line list
 
-type Report = Portfolio | Statement | Analysis
 
-type Output =
-    | Graph of Graph
-    | Report of Report
-
-type Program =
-    | Command of Command
-    | Control of Control
-    | Output of Output
-
-type Canvas = Program list
+(*
+initialcapital(100)
+sell(tsla, 40)
+next
+buy(gold,100)
+sell(tsla,40)
+next
+next
+next
+buy(slvr,40)
+exit
+output(portfolio)
+output(bargraph)
+exit
+*)
