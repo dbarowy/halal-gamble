@@ -26,22 +26,21 @@ let capital = Array.create 6 0
 let evalBuy (buy: Buy) =
     let key = (buy.stock.ToUpper() + (buy.year.ToString()) + "B")
     transactions.Add(key, buy.buy)
+
     capital[buy.year - 2015] <- capital[buy.year] - buy.buy
-    key + " " + buy.buy.ToString()
 
 
  
 let evalSell (sell: Sell) = 
     let key = (sell.stock.ToUpper() + (sell.year.ToString()) + "S")
     transactions.Add(key, sell.sell)
+
     capital[sell.year - 2015] <- capital[sell.year] + sell.sell
-    key + " " + sell.sell.ToString()
 
 
 
 let evalInitialCapital (initial: InitialCapital) =
         capital[0] <- capital[0] + initial.amount
-        initial.initial + " " + initial.amount.ToString()
 
 
 
@@ -54,15 +53,10 @@ let evalCommand (command: Command) =
 
 let evalOutput (output: Output) = 
     match output with
-    | Bargraph -> 
-                transactions.Add("bargraph", 1)
-                "bargraph"
-    | Timeseries -> 
-                    transactions.Add("timeseries", 1)
-                    "timeseries"
-    | Portfolio -> 
-                    transactions.Add("portfolio", 1)
-                    "portfolio"
+    | Bargraph -> transactions.Add("bargraph", 1)
+    | Timeseries -> transactions.Add("timeseries", 1)
+    | Portfolio -> transactions.Add("portfolio", 1)
+
 
 
 let evalLine (line: Line) = 
@@ -73,9 +67,12 @@ let evalLine (line: Line) =
 
 let rec evalProgram (program: Program) =
     match program with
-    | [] -> ""
-    | l::ls -> (evalLine l) + (evalProgram ls)
+    | [] -> ()
+    | l::ls -> evalLine l; evalProgram ls
 
 let evaluate (program: Program) =
-    (evalProgram program)
+    evalProgram program |> ignore
+    transactions
 
+let retCapital () =
+    capital

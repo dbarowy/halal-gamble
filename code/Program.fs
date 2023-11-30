@@ -1,6 +1,8 @@
 ﻿open Parser
 open Evaluator
 open CS334
+open Math
+open Chart
 
 
 
@@ -11,6 +13,7 @@ TO IMPLEMENT notes
 - Adjust for inflation
 - Allow initialcapital only one time
 - Make sure users dont sell more than they buy
+- what if i never sell
 *)
 
 
@@ -18,38 +21,18 @@ TO IMPLEMENT notes
 [<EntryPoint>]
 let main argv =
 
-
     let input = startAndReadInput ()
-    // printfn "%s" input
+    // printAST input
 
-    printAST input
-
-
-
-
-
-
-
-    
-
-    // match parse input with
-    // | Some ast ->
-    //     let mathcode = evaluate input
-    //     let calculatedOutput = calculate mathcode
-    //     displayOutput calculatedOutput
-    //     0
+    let ast = parse input
+    match ast with
+    | Some ast ->
+        let dataStructure = evaluate ast
+        // let calculatedData = calculate dataStructure
+        // visualize calculatedData
+        printfn "%A" dataStructure
+        0
         
-    // | None -> 
-    //     printfn "Invalid Stock Transations, please try again."
-    //     1
-    
-
-(*
-initialcapital(100) 
-buy(gold,50)  
-next
-sell(gold,50)
-next
-output(bargraph)
-exit
-*)
+    | None -> 
+        printfn "Invalid Stock Transations, please try again."
+        1

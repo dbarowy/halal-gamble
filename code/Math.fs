@@ -1,5 +1,7 @@
 module Math
+open AST
 open Evaluator
+open System.Collections.Generic
 
 
 //Rates
@@ -111,8 +113,8 @@ let getOutput =
 
 
 
-let calculate (input: string) =
-    "calculated output"
+let calculate (input: Dictionary<string,int>) =
+    ""
 
 
 
