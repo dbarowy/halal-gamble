@@ -1,9 +1,19 @@
 dotnet run
 
 start
-initialcapital(100)
-buy(gold,100)
+initialCapital(100)
+buy(GOLD, 25)
 next
-sell(gold,100)
-output(portfolio)
+sell(GOLD, 25)
+buy(SLVR, 70)
+next
+sell(SLVR, 70)
+next
+buy(SLVR, 50)
+next
+sell(SLVR,50)
+buy(GOLD,50)
+next
+buy(GOLD, 50)
+graph(BarGraph)
 exit
