@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  19 NOV 2023 18:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  30 NOV 2023 00:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./lab-8.tex
-(lab-8.tex
+**./specification.tex
+(specification.tex
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -900,65 +900,57 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 \forest@externalize@max@outer@n=\count344
 \forest@externalize@inner@n=\count345
 )
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip68
-\multirow@cntb=\count346
-\multirow@dima=\skip69
-\bigstrutjot=\dimen291
-)
-\c@claim=\count347
-\c@definition=\count348
-\c@theorem=\count349
-\c@lemma=\count350
-\c@observation=\count351
-\c@question=\count352
+\c@claim=\count346
+\c@definition=\count347
+\c@theorem=\count348
+\c@lemma=\count349
+\c@observation=\count350
+\c@question=\count351
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
-4.
-
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+3.
+ (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-No file lab-8.aux.
-\openout1 = `lab-8.aux'.
+No file specification.aux.
+\openout1 = `specification.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 54.
-LaTeX Font Info:    ... okay on input line 54.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count353
-\scratchdimen=\dimen292
+\scratchcounter=\count352
+\scratchdimen=\dimen291
 \scratchbox=\box88
-\nofMPsegments=\count354
-\nofMParguments=\count355
+\nofMPsegments=\count353
+\nofMParguments=\count354
 \everyMPshowfont=\toks61
-\MPscratchCnt=\count356
-\MPscratchDim=\dimen293
-\MPnumerator=\count357
-\makeMPintoPDFobject=\count358
+\MPscratchCnt=\count355
+\MPscratchDim=\dimen292
+\MPnumerator=\count356
+\makeMPintoPDFobject=\count357
 \everyMPtoPDFconversion=\toks62
 )
-Package hyperref Info: Link coloring OFF on input line 54.
+Package hyperref Info: Link coloring OFF on input line 53.
 \@outlinefile=\write5
-\openout5 = `lab-8.out'.
+\openout5 = `specification.out'.
 
 
 *geometry* driver: auto-detecting
@@ -995,101 +987,92 @@ Package hyperref Info: Link coloring OFF on input line 54.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--66
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
 5.
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 92.
+[1{C:/Users/tashr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ta
+shr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
+] [2]
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+
+ []
+
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+92.
+(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+[3] [4]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 258
+.
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 92.
-
+LaTeX Font Info:    Trying to load font information for U+msb on input line 258
+.
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 97--97
-[]\OT1/ptm/m/n/10 A tex-tual iden-ti-fier for
+Underfull \hbox (badness 10000) in paragraph at lines 257--259
+
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 97--97
-\OT1/ptm/m/n/10 a stock, like 'GOLD',
- []
+Underfull \hbox (badness 10000) in paragraph at lines 278--280
 
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 1
-03.
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 103.
-
-Underfull \hbox (badness 1448) in paragraph at lines 103--103
-[]\OT1/ptm/m/n/10 Initiates a buy trans-ac-tion
  []
 
 
-Underfull \hbox (badness 2119) in paragraph at lines 103--103
-\OT1/ptm/m/n/10 for a spec-i-fied stock and
+Underfull \hbox (badness 10000) in paragraph at lines 284--286
+
  []
 
 
-Underfull \hbox (badness 1292) in paragraph at lines 106--106
-[]\OT1/ptm/m/n/10 Triggers a sell trans-ac-tion
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
  []
 
-
-Underfull \hbox (badness 3449) in paragraph at lines 112--112
-\OT1/ptm/m/n/10 sen-ta-tion of the port-fo-lio
- []
-
-
-Overfull \hbox (29.43118pt too wide) in paragraph at lines 92--121
- [][] 
- []
-
-[1{C:/Users/tashr/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ta
-shr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
-
-] (lab-8.aux)
+[5] (specification.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `lab-8.out' has changed.
+Package rerunfilecheck Warning: File `specification.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
-Package rerunfilecheck Info: Checksums for `lab-8.out':
+Package rerunfilecheck Info: Checksums for `specification.out':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  EDC3A3E4FAB2EE37CD80AEBE748FE50E;300.
+(rerunfilecheck)             After:  52846303AECD2FB3D3964F257D2C63C2;760.
  ) 
 Here is how much of TeX's memory you used:
- 30997 strings out of 475248
- 685994 string characters out of 5757813
- 1940801 words of memory out of 5000000
- 52052 multiletter control sequences out of 15000+600000
- 567760 words of font info for 56 fonts, out of 8000000 for 9000
+ 30936 strings out of 475248
+ 684825 string characters out of 5757813
+ 1933801 words of memory out of 5000000
+ 51986 multiletter control sequences out of 15000+600000
+ 568074 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,11n,103p,1604b,439s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,11n,103p,1591b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
+cmmi10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
 r/ucrr8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmb8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb>
-Output written on lab-8.pdf (1 page, 59563 bytes).
+Output written on specification.pdf (5 pages, 75917 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 500000)
+ 62 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
