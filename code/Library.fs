@@ -1,5 +1,8 @@
 module CS334
 open System
+open System.Diagnostics
+open System.IO
+
 
 (*
     Prints the usage message and exits the program with exit code 1.
@@ -99,6 +102,20 @@ let takeUserInput () =
             input
         | "next", _ -> 
             printfn "You are now in %d" (year + 1)
+
+            let filename = "\\data\\" + string(year) + ".pdf"
+
+            // Check current directory and file existence
+            let currentDir = Directory.GetCurrentDirectory()
+            let file = currentDir + filename
+
+            if File.Exists(file) then
+                let psi = new ProcessStartInfo(file)
+                psi.UseShellExecute <- true
+                Process.Start(psi) |> ignore
+            else
+                printfn "File not found: %s" file
+            
             takeUserInputHelper input (year + 1)
         | _, y ->
             let yearAddedInput = ( newInput[0..(newInput.Length - 2)] + "," + string(year) + ")" )
@@ -136,6 +153,21 @@ let startAndReadInput () =
     printStartMessage ()
     let start = startGame ()
     if start = true then
+
+        let filename = "\\data\\2015.pdf"
+
+        // Check current directory and file existence
+        let currentDir = Directory.GetCurrentDirectory()
+        let file = currentDir + filename
+
+        if File.Exists(file) then
+            let psi = new ProcessStartInfo(file)
+            psi.UseShellExecute <- true
+            Process.Start(psi) |> ignore
+        else
+            printfn "File not found: %s" file
+
+
         let input = takeUserInput ()
         formatInput input
     else
