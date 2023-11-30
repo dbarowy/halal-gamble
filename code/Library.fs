@@ -154,7 +154,7 @@ let startAndReadInput () =
     let start = startGame ()
     if start = true then
 
-        let filename = "\\data\\2015.pdf"
+        let filename = "\\Data\\2015.pdf"
 
         // Check current directory and file existence
         let currentDir = Directory.GetCurrentDirectory()
