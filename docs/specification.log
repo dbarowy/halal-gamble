@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  30 NOV 2023 00:52
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  30 NOV 2023 01:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -911,7 +911,7 @@ LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
  (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-No file specification.aux.
+(specification.aux)
 \openout1 = `specification.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
@@ -949,6 +949,7 @@ ii
 \everyMPtoPDFconversion=\toks62
 )
 Package hyperref Info: Link coloring OFF on input line 53.
+ (specification.out) (specification.out)
 \@outlinefile=\write5
 \openout5 = `specification.out'.
 
@@ -1047,21 +1048,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--293
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-
-
-Package rerunfilecheck Warning: File `specification.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `specification.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  52846303AECD2FB3D3964F257D2C63C2;760.
+Package rerunfilecheck Info: File `specification.out' has not changed.
+(rerunfilecheck)             Checksum: 52846303AECD2FB3D3964F257D2C63C2;760.
  ) 
 Here is how much of TeX's memory you used:
- 30936 strings out of 475248
- 684825 string characters out of 5757813
+ 30952 strings out of 475248
+ 685413 string characters out of 5757813
  1933801 words of memory out of 5000000
- 51986 multiletter control sequences out of 15000+600000
+ 51996 multiletter control sequences out of 15000+600000
  568074 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  98i,11n,103p,1591b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1070,9 +1064,9 @@ cmmi10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
 r/ucrr8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmb8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmr8a.pfb>
-Output written on specification.pdf (5 pages, 75917 bytes).
+Output written on specification.pdf (5 pages, 78011 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
+ 84 PDF objects out of 1000 (max. 8388607)
  14 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
