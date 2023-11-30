@@ -1,0 +1,9 @@
+dotnet run
+
+start
+initialcapital(100)
+buy(gold,100)
+next
+sell(gold,100)
+output(portfolio)
+exit
