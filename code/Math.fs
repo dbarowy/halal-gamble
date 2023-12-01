@@ -258,6 +258,49 @@ let rec calculateTotalYearlyProfit years =
 
 
 
+let rec calculateTotalYearlyProfit2 years =
+    match years with
+    | [] -> totalYearlyProfit
+    | y::ys ->
+        let index = int(y) - 2016
+
+        //How much sold every year
+        let gold = stocksIndividual["GOLDS"][index]
+        let slvr = stocksIndividual["SLVRS"][index]
+        let tsla = stocksIndividual["TSLAS"][index]
+        // printfn "%A" y
+        // printfn "GOld: %A" gold
+        // printfn "SLVR: %A" slvr
+        // printfn "TSLA: %A" tsla
+
+
+    
+            
+        //but i cant calcualte rates from only previous years to curent year. i have to consider when the stock was bought and what if it awas bought in multiple steps
+        let goldRate = rates["GOLD" + (string(int(y) - 1)) + y]
+        let slvrRate = rates["SLVR" + (string(int(y) - 1)) + y]
+        let tslaRate = rates["TSLA" + (string(int(y) - 1)) + y]
+
+        
+        
+        // printfn "GOLD RATE: %A" goldRate
+        // printfn "SLVR RATE: %A" slvrRate
+        // printfn "TSLA RATE: %A" tslaRate
+
+        let goldProfit = float(gold) * goldRate
+        let slvrProfit = float(slvr) * slvrRate
+        let tslaProfit = float(tsla) * tslaRate
+
+        // printfn "%A" goldProfit
+        // printfn "%A" slvrProfit
+        // printfn "%A" tslaProfit
+
+        profitIndividual["GOLD"][0] <- profitIndividual["GOLD"][0] + goldProfit
+        profitIndividual["SLVR"][0] <- profitIndividual["SLVR"][0] + slvrProfit
+        profitIndividual["TSLA"][0] <- profitIndividual["TSLA"][0] + tslaProfit
+        totalYearlyProfit[index + 1] <- goldProfit + slvrProfit + tslaProfit
+        calculateTotalYearlyProfit2 ys
+
 
 
 
@@ -287,6 +330,7 @@ let calculate (input: Dictionary<string,float>) =
         stocks 
         (starting |> Array.toList)
         (ending |> Array.toList)
+        (yearlybuySell |> Array.toList)
     |> ignore
 
 
