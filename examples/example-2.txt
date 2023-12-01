@@ -1,0 +1,18 @@
+dotnet run
+start
+
+initialCapital(100)
+buy(TSLA, 25)
+next
+sell(TSLA, 25)
+next
+sell(TSLA, 100)
+next
+sell(TSLA, 100)
+next
+buy(SLVR, 100)
+next
+sell(SLVR, 100)
+graph(TimeSeries)
+result(PortfolioStatement)
+exit
