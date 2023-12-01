@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  30 NOV 2023 01:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  1 DEC 2023 02:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,55 +900,69 @@ Package: inlinedef 2008/07/10 v1.0 Inlined expansions within definitions
 \forest@externalize@max@outer@n=\count344
 \forest@externalize@inner@n=\count345
 )
-\c@claim=\count346
-\c@definition=\count347
-\c@theorem=\count348
-\c@lemma=\count349
-\c@observation=\count350
-\c@question=\count351
+(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2019/06/20 v3.9 Customized lists
+\labelindent=\skip68
+\enit@outerparindent=\dimen291
+\enit@toks=\toks61
+\enit@inbox=\box88
+\enit@count@id=\count346
+\enitdp@description=\count347
+)
+(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+\enitdp@todolist=\count348
+\c@claim=\count349
+\c@definition=\count350
+\c@theorem=\count351
+\c@lemma=\count352
+\c@observation=\count353
+\c@question=\count354
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
-3.
- (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+6.
+
+(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (specification.aux)
 \openout1 = `specification.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count352
-\scratchdimen=\dimen291
-\scratchbox=\box88
-\nofMPsegments=\count353
-\nofMParguments=\count354
-\everyMPshowfont=\toks61
-\MPscratchCnt=\count355
-\MPscratchDim=\dimen292
-\MPnumerator=\count356
-\makeMPintoPDFobject=\count357
-\everyMPtoPDFconversion=\toks62
+\scratchcounter=\count355
+\scratchdimen=\dimen292
+\scratchbox=\box89
+\nofMPsegments=\count356
+\nofMParguments=\count357
+\everyMPshowfont=\toks62
+\MPscratchCnt=\count358
+\MPscratchDim=\dimen293
+\MPnumerator=\count359
+\makeMPintoPDFobject=\count360
+\everyMPtoPDFconversion=\toks63
 )
-Package hyperref Info: Link coloring OFF on input line 53.
+Package hyperref Info: Link coloring OFF on input line 56.
  (specification.out) (specification.out)
 \@outlinefile=\write5
 \openout5 = `specification.out'.
@@ -989,12 +1003,12 @@ Package hyperref Info: Link coloring OFF on input line 53.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--66
+Underfull \hbox (badness 10000) in paragraph at lines 65--69
 
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
-5.
+8.
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1002,71 +1016,79 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 shr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 ] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 188--191
+Underfull \hbox (badness 10000) in paragraph at lines 186--190
 
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-92.
+90.
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
 [3] [4]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 258
+LaTeX Font Info:    Trying to load font information for U+msa on input line 256
 .
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 258
+LaTeX Font Info:    Trying to load font information for U+msb on input line 256
 .
 
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 10000) in paragraph at lines 257--259
+Underfull \hbox (badness 10000) in paragraph at lines 255--257
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--280
+Underfull \hbox (badness 10000) in paragraph at lines 276--278
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--286
+Underfull \hbox (badness 10000) in paragraph at lines 282--284
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 291--293
+Underfull \hbox (badness 10000) in paragraph at lines 289--291
 
  []
 
-[5] (specification.aux)
+[5] [6] (specification.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-Package rerunfilecheck Info: File `specification.out' has not changed.
-(rerunfilecheck)             Checksum: 52846303AECD2FB3D3964F257D2C63C2;760.
+
+
+Package rerunfilecheck Warning: File `specification.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `specification.out':
+(rerunfilecheck)             Before: 52846303AECD2FB3D3964F257D2C63C2;760
+(rerunfilecheck)             After:  C3EE15E1B7D3596E122A484B858C3F8E;798.
  ) 
 Here is how much of TeX's memory you used:
- 30952 strings out of 475248
- 685413 string characters out of 5757813
- 1933801 words of memory out of 5000000
- 51996 multiletter control sequences out of 15000+600000
+ 31708 strings out of 475248
+ 695651 string characters out of 5757813
+ 1935801 words of memory out of 5000000
+ 52744 multiletter control sequences out of 15000+600000
  568074 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,11n,103p,1591b,587s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 98i,11n,103p,1620b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
-r/ucrr8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmb8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
-s/utmr8a.pfb>
-Output written on specification.pdf (5 pages, 78011 bytes).
+cmmi10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/symbols/msam10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/urw/courier/ucrr8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/
+type1/urw/times/utmb8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/
+type1/urw/times/utmr8a.pfb>
+Output written on specification.pdf (6 pages, 88242 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
+ 93 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

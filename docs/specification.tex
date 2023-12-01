@@ -16,6 +16,9 @@
 \usepackage[space]{grffile}
 \usepackage{booktabs}
 \usepackage{forest}
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
 
 % This will set LaTeX to look for figures in the same directory as the .tex file
 \graphicspath{.} % The dot means current directory.
@@ -58,49 +61,49 @@ Tashrique Ahmed, Elyes Laalai
 
 \subsection{Introduction}
 
-\textbf{Halal Gamble: The Stock Simulation Game}
 
-Halal Gamble is a domain-specific language (DSL) designed to demystify stock market investing through simulation using historical data. Its primary aim is to offer a user-friendly, engaging platform for beginners to learn and experiment with stock investments without financial risks. Unlike complex market simulators, Halal Gamble's intuitive interface and simplified interaction model make it accessible to a broader audience, including those with minimal financial background.
+\textbf{Halal Gamble: The Stock Simulation Game} 
+Halal Gamble is a domain-specific language (DSL) that emerges as a strategic tool designed to unravel the complexities of stock market investing through simulation with historical data. It is expressly engineered to serve as a user-friendly and engaging platform, targeting novice investors seeking a risk-free environment for learning and experimenting with stock investments. As old tools grew more complex, beginner-friendly platforms and programs have turned vary rare which led to the idea of this programming language. This project targets people with different trading experiences and, most importantly, is open to all. 
 \\ \\
-This language simplifies stock market dynamics, focusing on core investment strategies and market fundamentals. By abstracting complex trading concepts, it encourages users to learn through direct interaction with historical market scenarios, promoting a practical understanding of investment principles.
+The Halal Gamble provides the player with historical stock prices from 2010-2020. The player starts in 2015 and reviews graphs and data about gold, silver, and Tesla, and decides whether they decided to pursue a stock purchase or sale. Afterwards, this program provides them with the new prices in 2016, and the same process continues up to 2020. The player has both the option to buy or sell stocks. The player might also choose to move through a a year without starting a transaction. At the end of the game, the player is informed about their gains or losses. The results are a useful metric to estimate how well the trader would have done a few years in the past with real capital.
 
 
 \subsection{Design Principles}
 
-Halal Gamble is designed with a focus on simplicity, clarity, and user engagement. It features a straightforward syntax and semantics for easy comprehension, alongside efficient data structures and memory management to optimize performance. The language offers flexibility in stock and date selections, ensuring robust type-checking and error-handling for safety. Emphasizing user accessibility, it provides clear documentation and a supportive community to facilitate a positive user experience. Tailored for practical application, our DSL smoothly handles historical stock market data and features an intuitive, natural-language-like syntax suitable for all skill levels. It includes investment-specific functionalities and visualizations, crucial for demystifying complex financial concepts, while allowing for flexible and customizable portfolio management.
+Halal Gamble places a paramount emphasis on simplicity, clarity, and user engagement. Its design incorporates a straightforward syntax and semantics for easy comprehension, coupled with efficient data structures and memory management to optimize performance. The language offers flexibility in stock and date selections, ensuring robust type-checking and error-handling for user safety. Committed to user accessibility, Halal Gamble provides clear documentation and fosters a supportive community, enhancing the overall user experience. Tailored for practical application, the DSL adeptly handles historical stock market data, featuring an intuitive, natural-language-like syntax suitable for all skill levels. Beyond syntax, it includes investment-specific functionalities and visualizations crucial for demystifying complex financial concepts, while allowing for flexible and customizable portfolio management. In essence, Halal Gamble seamlessly combines technical sophistication with user-friendly features, catering to a diverse audience and facilitating a deep understanding of stock market dynamics. This design make this language easy and educational.
 
 \subsection{Examples}
 
 \textbf{Sample Program 1}
 \begin{verbatim}
 dotnet run
+start
 
-/* Open a webpage containing stock market data and news from 2010 to 2015*/
+/* Open a PDF file containing stock market data and news from 2010 to 2015*/
 InitialCapital(100)
 Buy(GOLD, 25)
 Next
 
-/*Open a webpage containing stock market data and news from 2015 to 2016*/
+/*Open a PDF file containing stock market data and news from 2015 to 2016*/
 Sell(GOLD, 25)
-Buy(SILVER, 70)
-Buy(BRONZE, 30)
+Buy(SLVR, 70)
 Next
 
-/*Open a webpage containing stock market data and news from 2016 to 2017*/
-Sell(SILVER, 50)
-Next
-/*Open a webpage containing stock market data and news from 2017 to 2018*/
-
-Sell(SILVER, 50)
-Sell(BRONZE, 30)
+/*Open a PDF file containing stock market data and news from 2016 to 2017*/
+Sell(SLVR, 70)
 Next
 
-/*Open a webpage containing stock market data and news from 2018 to 2019*/
-Buy(SILVER, 70)
+/*Open a PDF file containing stock market data and news from 2017 to 2018*/
+Buy(SLVR, 50)
 Next
 
-/*Open a webpage containing stock market data and news from 2019 to 2020*/
-Buy(SILVER, 50)
+/*Open a PDF file containing stock market data and news from 2018 to 2019*/
+Sell(SLVR,50)
+Buy(GOLD,50)
+Next
+
+/*Open a PDF file containing stock market data and news from 2019 to 2020*/
+Buy(GOLD, 50)
 Graph(BarGraph)
 Exit
 
@@ -109,33 +112,31 @@ Exit
 \textbf{Sample Program 2}
 \begin{verbatim}
 dotnet run
+start
 
-/* Open a webpage containing stock market data and news from 2010 to 2015*/
+/* Open a PDF file containing stock market data and news from 2010 to 2015*/
 InitialCapital(100)
-Buy(GOLD, 25)
+Buy(TSLA, 25)
 Next
 
-/*Open a webpage containing stock market data and news from 2015 to 2016*/
-Sell(GOLD, 25)
-Buy(SILVER, 70)
-Buy(BRONZE, 30)
+/*Open a PDF file containing stock market data and news from 2015 to 2016*/
+Sell(TSLA, 25)
 Next
 
-/*Open a webpage containing stock market data and news from 2016 to 2017*/
-Sell(SILVER, 50)
+/*Open a PDF file containing stock market data and news from 2016 to 2017*/
+Sell(TSLA, 100)
 Next
 
-/*Open a webpage containing stock market data and news from 2017 to 2018*/
-Sell(SILVER, 50)
-Sell(BRONZE, 30)
+/*Open a PDF file containing stock market data and news from 2017 to 2018*/
+Sell(TSLA, 100)
 Next
 
-/*Open a webpage containing stock market data and news from 2018 to 2019*/
-Buy(SILVER, 70)
+/*Open a PDF file containing stock market data and news from 2018 to 2019*/
+Buy(SLVR, 100)
 Next
 
-/*Open a webpage containing stock market data and news from 2019 to 2020*/
-Buy(SILVER, 50)
+/*Open a PDF file containing stock market data and news from 2019 to 2020*/
+Sell(SLVR, 100)
 Graph(TimeSeries)
 Result(PortfolioStatement)
 Exit
@@ -147,35 +148,32 @@ Exit
 \begin{verbatim}
 dotnet run
 
-/* Open a webpage containing stock market data and news from 2008 to 2010 */
+/* Open a PDF file containing stock market data and news from 2010 to 2015 */
 InitialCapital(150)
-Buy(OIL, 40)
-Buy(TECH, 30)
+Buy(GOLD, 50)
+Buy(TSLA, 50)
 Next
 
-/* Open a webpage containing stock market data and news from 2010 to 2012 */
-Sell(OIL, 20)
-Buy(RENEWABLE, 50)
+/* Open a PDF file containing stock market data and news from 2015 to 2016 */
+Sell(GOLD, 50)
+Sell(TSLA, 50) 
 Next
 
-/* Open a webpage containing stock market data and news from 2012 to 2014 */
-Sell(TECH, 30)
-Buy(HEALTHCARE, 40)
+/* Open a PDF file containing stock market data and news from 2016 to 2017 */
+Buy(SLVER, 50)
+Buy(TSLA, 50)
 Next
 
-/* Open a webpage containing stock market data and news from 2014 to 2016 */
-Sell(RENEWABLE, 50)
-Buy(INFRASTRUCTURE, 60)
+/* Open a PDF file containing stock market data and news from 2017 to 2018 */
 Next
 
-/* Open a webpage containing stock market data and news from 2016 to 2018 */
-Sell(HEALTHCARE, 40)
-Buy(AI_TECH, 70)
+/* Open a PDF file containing stock market data and news from 2018 to 2019 */
+
 Next
 
-/* Open a webpage containing stock market data and news from 2018 to 2020 */
-Sell(INFRASTRUCTURE, 60)
-Buy(CYBER_SECURITY, 80)
+/* Open a PDF file containing stock market data and news from 2019 to 2020 */
+Sell(SLVER, 50)
+Sell(TSLA, 50)
 Graph(TimeSeries)
 Result(PortfolioStatement)
 Exit
@@ -202,7 +200,7 @@ The core concepts in this domain-specific language (DSL) are centered around sto
 \end{itemize}
 
 
-\subsection{Syntax}
+\subsection{Formal Syntax}
 
 \textbf{Detailed Syntax of Halal Gamble:}
 
@@ -276,7 +274,7 @@ Root
 \end{verbatim}
 
 \textbf{Program Evaluation (Input)}
-Programs in this DSL read textual input commands, which include stock names (like GOLD, SILVER), numerical values (such as quantities for buying or selling, initial capital), and control instructions (like Next, Exit). Each line of input corresponds to an operation or control command that affects the simulation of the stock market investment.\\
+Programs in this DSL read textual input commands, which include stock names (e.g. GOLD, SILVER), numerical values (e.g. quantities for buying or selling, initial capital), and control instructions (e.g. Next, Exit). Each line of input corresponds to an operation or control command that affects the simulation of the stock market investment.\\
 
 \textbf{Program Evaluaiton (Output)}
 The output of evaluating a program in this DSL includes:
@@ -294,8 +292,17 @@ The traversal order ensures that each operation's effect on the portfolio is cal
 
 \subsection{Remaining Work}
 
-\textbf{Primitive Kinds of Values:}
-Lorem ipsuem desciprtion
+At this stage, we have added the three main components of our programming language to our repository. First, we coded Combinator.fs, AST.fs, Combinator.fs, Evaluator.fs, Library.fs, Math.fs, Parser.fs, Program.fs, constructResult.py. Second, we included csv data files of three stock prices: gold, silver, and Tesla from 2010 to 2020. Last, we added PDFs which include graphics of the evolution of prices over time. We tested these components separately so that it's easier later on to spot problems with our code and be able to fix them. The next, and probably ultimate, step of the process is to connect all these pieces and make sure that our project compiles and runs. We tested all the different pieces separately and made sure they worked. Now, we have to combine them all, and see how they interact and produce (or not) the correct output that we are expecting. Doing so, we can also pick up on some inefficiencies that we can address. Currently, the data types we started with, which we described thoroughly in this project specification, seem enough to achieve the goal of our programming language, so we are not considering adding new ones. The next steps of this project are outlined as follows:
+\begin{todolist}
+    \item Finish debugging the code files
+    \item Make sure the output is correct
+    \item Optimize code (if possible)
+    \item Add documentation (when needed)
+    \item Review submission, and submit!
+    
+  \end{todolist}
+
+
 
 % DO NOT DELETE ANYTHING BELOW THIS LINE
 \end{document}
