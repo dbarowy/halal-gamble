@@ -9,7 +9,7 @@ let years = [2015; 2016; 2017; 2018; 2019; 2020]
 
 
 //-----------------FUNCTIONS-----------------//
-let drawTimeseries (yearlyCapital: int list) (portfolioValueWithProfit: int list) =
+let drawTimeseries (yearlyCapital: float list) (portfolioValueWithProfit: float list) =
     let timeseries = 
         [   Chart.Line(x = years, y = yearlyCapital, Name = "Yearly Capital Change")
             Chart.Line(x = years, y = portfolioValueWithProfit, Name = "Total Portfolio Value") ]
@@ -20,7 +20,7 @@ let drawTimeseries (yearlyCapital: int list) (portfolioValueWithProfit: int list
     timeseries
 
 
-let drawBargraph (stocks: string list) (starts: int list) (ends: int list) =
+let drawBargraph (stocks: string list) (starts: float list) (ends: float list) =
     let bargraph = 
         [
             Chart.Column (starts, stocks, Name="Purchased Stock");
@@ -32,7 +32,7 @@ let drawBargraph (stocks: string list) (starts: int list) (ends: int list) =
     bargraph
 
 
-let drawPortfolio  (initial: int) (totalYearlyProfit: int list) (yearlyCapital: int list) (portfolioValueWithProfit: int list) (stocks: string list) (starts: int list) (ends: int list) =
+let drawPortfolio  (initial: float) (totalYearlyProfit: float list) (yearlyCapital: float list) (portfolioValueWithProfit: float list) (stocks: string list) (starts: float list) (ends: float list) =
 
     //Create pdf
     let pdf_doc = new Document()
@@ -131,7 +131,7 @@ let drawPortfolio  (initial: int) (totalYearlyProfit: int list) (yearlyCapital: 
 
 
 //-----------------MAIN-----------------//
-let visualize (output: string list) (initial: int) (totalYearlyProfit: int list) (yearlyCapital: int list) (portfolioValueWithProfit: int list) (stocks: string list) (starts: int list) (ends: int list) =
+let visualize (output: string list) (initial: float) (totalYearlyProfit: float list) (yearlyCapital: float list) (portfolioValueWithProfit: float list) (stocks: string list) (starts: float list) (ends: float list) =
     
     if List.contains "portfolio" output then
         drawPortfolio initial totalYearlyProfit yearlyCapital portfolioValueWithProfit stocks starts ends
@@ -157,17 +157,17 @@ let visualize (output: string list) (initial: int) (totalYearlyProfit: int list)
 
 //-----------------EXAMPLE INPUT-----------------//
 
-let initial = 1000
-let output = ["timeseries"; "bargraph"; "portfolio"]
+// let initial = 1000.0
+// let output = ["timeseries"; "bargraph"; "portfolio"]
 
-let totalYearlyProfit = [34 ; 41; -3; 16; -12; 8]
-let yearlyCapital = [1000; 960; 850; 1070; 990; 590]
+// let totalYearlyProfit = [34.0 ; 41; -3; 16; -12; 8]
+// let yearlyCapital = [1000; 960; 850; 1070; 990; 590]
 
-let portfolioValueWithProfit = [1000; 960; 850; 1034; 1010; 850]
+// let portfolioValueWithProfit = [1000.0; 960; 850.0; 1034; 1010; 850]
 
-//StockTransactions
-let stocks = ["GOLD"; "TSLA"; "SLVR"] //MUST BE UPPERCASE
-let starts = [100; 100; 100]
-let ends = [110; 50; 50]
+// //StockTransactions
+// let stocks = ["GOLD"; "TSLA"; "SLVR"] //MUST BE UPPERCASE
+// let starts = [100; 100; 100]
+// let ends = [110; 50; 50]
 
-visualize output initial totalYearlyProfit yearlyCapital portfolioValueWithProfit stocks starts ends
+// visualize output initial totalYearlyProfit yearlyCapital portfolioValueWithProfit stocks starts ends

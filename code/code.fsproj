@@ -11,8 +11,8 @@
     <Compile Include="Parser.fs" />
     <Compile Include="Evaluator.fs" />
     <Compile Include="Library.fs" />
-    <Compile Include="Math.fs" />
     <Compile Include="Chart.fs" />
+    <Compile Include="Math.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

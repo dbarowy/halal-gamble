@@ -18,30 +18,22 @@ open System.Collections.Generic
 //     "bargraph", 1
 //     "timeseries", 1
 // ]
-let transactions = new Dictionary<string, int>()
-let capital = Array.create 6 0
+let transactions = new Dictionary<string, float>()
+let capital = Array.create 1 0
 
-//sprintf "\"%sB\": %d, " (stock.ToString()) amount
-//Have not yet put the YEAR of transaction inside the string
 let evalBuy (buy: Buy) =
     let key = (buy.stock.ToUpper() + (buy.year.ToString()) + "B")
     transactions.Add(key, buy.buy)
 
-    capital[buy.year - 2015] <- capital[buy.year] - buy.buy
 
 
- 
 let evalSell (sell: Sell) = 
     let key = (sell.stock.ToUpper() + (sell.year.ToString()) + "S")
     transactions.Add(key, sell.sell)
 
-    capital[sell.year - 2015] <- capital[sell.year] + sell.sell
-
-
 
 let evalInitialCapital (initial: InitialCapital) =
         capital[0] <- capital[0] + initial.amount
-
 
 
 let evalCommand (command: Command) =
