@@ -138,8 +138,6 @@ let drawPortfolio  (initial: float) (totalYearlyProfit: float list) (yearlyCapit
     footerF.TextState.FontSize <- 8.0f
     footerF.TextState.FontStyle <- FontStyles.Italic
 
-
-
     page.Paragraphs.Add((titleF))
     page.Paragraphs.Add((descriptionF))
     page.Paragraphs.Add((breakdownsF))
@@ -207,26 +205,7 @@ let visualize (output: string list) (initial: float) (totalYearlyProfit: float l
 
 
     else
-        printfn "No output selected."
-        ()
+        printfn "No output type was selected.\n Type 'output(<graph>)' where graph is one of portfolio, timeseries, or bargraph.\n Please try again.\n"
+        exit 0
     
     printfn "Output generated successfully to the folder: %s" parentDir
-
-
-
-//-----------------EXAMPLE INPUT-----------------//
-
-// let initial = 1000.0
-// let output = ["timeseries"; "bargraph"; "portfolio"]
-
-// let totalYearlyProfit = [34.0 ; 41; -3; 16; -12; 8]
-// let yearlyCapital = [1000; 960; 850; 1070; 990; 590]
-
-// let portfolioValueWithProfit = [1000.0; 960; 850.0; 1034; 1010; 850]
-
-// //StockTransactions
-// let stocks = ["GOLD"; "TSLA"; "SLVR"] //MUST BE UPPERCASE
-// let starts = [100; 100; 100]
-// let ends = [110; 50; 50]
-
-// visualize output initial totalYearlyProfit yearlyCapital portfolioValueWithProfit stocks starts ends

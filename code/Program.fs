@@ -1,6 +1,6 @@
 ﻿open Parser
 open Evaluator
-open CS334
+open Library
 open Math
 
 
@@ -29,8 +29,8 @@ let main argv =
 TO IMPLEMENT notes
 
 - Adjust for inflation
-- Allow initialcapital only one time
+- Allow initialcapital only one time [done]
 - Make sure users dont sell more than they buy [done]
-- what if i never sell
-- give option to save my pdf portfolio and graphs
+- what if i never sell [done]
+- give option to save my pdf portfolio and graphs [done]
 *)

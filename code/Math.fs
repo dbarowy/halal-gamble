@@ -1,6 +1,10 @@
 module Math
 open System.Collections.Generic
+open Library
 
+(*
+* Relative rates of return for gold, silver and tesla stocks from 2015 to 2020
+*)
 let rates = dict [
     "GOLD20152016", 1.09
     "GOLD20152017", 1.22
@@ -64,7 +68,6 @@ let rates = dict [
 
     "TSLA20192020", 6.72
 ]
-
 let years = ["2016"; "2017"; "2018"; "2019"; "2020"]
 
 //-----------------Evaluated Variables-----------------//
@@ -88,7 +91,7 @@ let years = ["2016"; "2017"; "2018"; "2019"; "2020"]
 // let transactions = transactionsx |> Seq.map (fun kvp -> (kvp.Key, float(kvp.Value))) |> Seq.toList
 let transactions = Evaluator.transactions |> Seq.map (fun kvp -> (kvp.Key, float(kvp.Value))) |> Seq.toList
 let initial = float(Evaluator.capital[0])
-
+let currentCapital = Array.create 1 initial
 
 //-----------------Calculated Variables-----------------//
 let mutable output = []
@@ -114,13 +117,16 @@ let profitIndividual = dict [
     "SLVR", Array.create 1 0.0
 
 ]
-let stocks = ["GOLD"; "TSLA"; "SLVR"] //MUST BE UPPERCASE
+let stocks = ["GOLD"; "TSLA"; "SLVR"]
 let starting = Array.create 3 0.0
 let ending = Array.create 3 0.0
 
 
-//-----------------Working Functions-----------------//
-
+(*
+    Processes a list of transactions to calculate the net buy or sell amount for each year.
+    @param transactions: List of transactions (key-value pairs).
+    @return: Array of net buy/sell amounts for each year.
+*)
 let rec calculateYearlyBuySell transactions =
     match transactions with
     | [] -> yearlybuySell
@@ -141,6 +147,12 @@ let rec calculateYearlyBuySell transactions =
             else
                 calculateYearlyBuySell ts
 
+
+(*
+    Processes transactions to calculate the starting and ending values of each stock.
+    @param transactions: List of stock transactions.
+    @return: Tuple of arrays containing starting and ending values for each stock.
+*)
 let rec startsEnds (transactions: list<string * float>) =
     match transactions with
     | [] -> starting, ending
@@ -163,11 +175,17 @@ let rec startsEnds (transactions: list<string * float>) =
                 if ending[index] > starting[index] then
                     printfn "Nah dude, you cannot sell more than you buy for %s. Basic maths yo!\n" stock
                     printfn "You bought $%.2f and sold $%.2f in %s\nStart again." starting[index] ending[index] year
-                    exit 1
+                    usage ()
                 startsEnds ts
             else
                 startsEnds ts
 
+
+(*
+    Calculates the yearly capital based on the net buy/sell amounts for each year.
+    @param yearlybuySell: List of yearly net buy/sell amounts.
+    @return: Array of yearly capital values.
+*)
 let calculateYearlyCapital (yearlybuySell: float list) =
     let rec helper i =
         match i with
@@ -176,7 +194,13 @@ let calculateYearlyCapital (yearlybuySell: float list) =
             yearlyCapital[i + 1] <- yearlyCapital[i] + yearlybuySell[i + 1]
             helper (i + 1)
     helper 0
-    
+
+
+(*
+    Extracts the types of outputs (like portfolio, bargraph, timeseries) from the transactions.
+    @param transactions: List of transactions.
+    @return: List of output types.
+*)
 let rec getOutputTypes (transactions: list<string * float>) =
     match transactions with
     | [] -> output
@@ -187,6 +211,12 @@ let rec getOutputTypes (transactions: list<string * float>) =
         else
             getOutputTypes ts
 
+
+(*
+   Calculates the quantity of each stock bought or sold each year.
+    @param transactions: List of transactions.
+    @return: Dictionary with stock types as keys and arrays of quantities for each year.
+*)
 let rec calculateStocksIndividual (transactions: list<string * float>) =
     match transactions with
     | [] -> stocksIndividual
@@ -202,6 +232,11 @@ let rec calculateStocksIndividual (transactions: list<string * float>) =
             stocksIndividual[key][int(year) - 2016] <- float(stocksIndividual[key][int(year) - 2016]) + float(v)
             calculateStocksIndividual ts
 
+(*
+    Calculates the portfolio value with profit for each year.
+    @param years: List of years.
+    @return: Array of portfolio values with profit for each year.
+*)
 let rec calculatePortfolioValueWithProfit years =
     match years with
     | [] -> portfolioValueWithProfit
@@ -210,51 +245,43 @@ let rec calculatePortfolioValueWithProfit years =
         portfolioValueWithProfit[index] <- yearlyCapital[index] + totalYearlyProfit[index]
         calculatePortfolioValueWithProfit ys
 
+
+
 //-----------------Progress Functions-----------------//
 
-
+(*
+    Calculates the total yearly profit from stock transactions.
+    @param years: List of years.
+    @return: Array of total yearly profits.
+*)
 let rec calculateTotalYearlyProfit years =
     match years with
     | [] -> totalYearlyProfit
     | y::ys ->
         let index = int(y) - 2016
 
-        //How much sold every year
         let gold = stocksIndividual["GOLDS"][index]
         let slvr = stocksIndividual["SLVRS"][index]
         let tsla = stocksIndividual["TSLAS"][index]
-        // printfn "%A" y
-        // printfn "GOld: %A" gold
-        // printfn "SLVR: %A" slvr
-        // printfn "TSLA: %A" tsla
 
-
-    
-            
-        //but i cant calcualte rates from only previous years to curent year. i have to consider when the stock was bought and what if it awas bought in multiple steps
         let goldRate = rates["GOLD" + (string(int(y) - 1)) + y]
         let slvrRate = rates["SLVR" + (string(int(y) - 1)) + y]
         let tslaRate = rates["TSLA" + (string(int(y) - 1)) + y]
-
-        
-        
-        // printfn "GOLD RATE: %A" goldRate
-        // printfn "SLVR RATE: %A" slvrRate
-        // printfn "TSLA RATE: %A" tslaRate
 
         let goldProfit = float(gold) * goldRate
         let slvrProfit = float(slvr) * slvrRate
         let tslaProfit = float(tsla) * tslaRate
 
-        // printfn "%A" goldProfit
-        // printfn "%A" slvrProfit
-        // printfn "%A" tslaProfit
-
         profitIndividual["GOLD"][0] <- profitIndividual["GOLD"][0] + goldProfit
         profitIndividual["SLVR"][0] <- profitIndividual["SLVR"][0] + slvrProfit
         profitIndividual["TSLA"][0] <- profitIndividual["TSLA"][0] + tslaProfit
         totalYearlyProfit[index + 1] <- goldProfit + slvrProfit + tslaProfit
+
         calculateTotalYearlyProfit ys
+
+
+
+
 
 
 
@@ -272,17 +299,12 @@ let rec calculateTotalYearlyProfit2 years =
         // printfn "GOld: %A" gold
         // printfn "SLVR: %A" slvr
         // printfn "TSLA: %A" tsla
-
-
-    
-            
+  
         //but i cant calcualte rates from only previous years to curent year. i have to consider when the stock was bought and what if it awas bought in multiple steps
         let goldRate = rates["GOLD" + (string(int(y) - 1)) + y]
         let slvrRate = rates["SLVR" + (string(int(y) - 1)) + y]
         let tslaRate = rates["TSLA" + (string(int(y) - 1)) + y]
 
-        
-        
         // printfn "GOLD RATE: %A" goldRate
         // printfn "SLVR RATE: %A" slvrRate
         // printfn "TSLA RATE: %A" tslaRate
@@ -307,12 +329,43 @@ let rec calculateTotalYearlyProfit2 years =
 
 
 
+(*
+    Calculates the current capital after each transaction, ensuring that purchases don't exceed available capital.
+    @param transactions: List of transactions.
+    @return: Array with the current capital after processing all transactions.
+*)
+let rec calculateCurrentCapital (transactions: list<string * float>) =
+    match transactions with
+    | [] -> currentCapital
+    | (k, v)::ts ->
+        if k = "portfolio" || k = "bargraph" || k = "timeseries" then
+            calculateCurrentCapital ts
+        else
+            let ttype = k.Substring(k.Length - 1, 1)
+            if ttype = "B" then
+                if currentCapital[0] - v < 0.0 then
+                    printfn "Dude, you cannot buy more than you have. You have $%.2f left" currentCapital[0]
+                    usage ()
+                currentCapital[0] <- currentCapital[0] - v
+                calculateCurrentCapital ts
+            elif ttype = "S" then
+                currentCapital[0] <- currentCapital[0] + v
+                calculateCurrentCapital ts
+            else
+                calculateCurrentCapital ts
 
-    
 
 
+
+(*
+    Main function to calculate necessary financial figures and visualize the data.
+    Processes the transactions, calculates buy/sell amounts, yearly capital, stock quantities, and profits. 
+    Finally, calls the visualization function with calculated data.
+    @param input: Dictionary of transactions.
+*)
 let calculate (input: Dictionary<string,float>) =
     startsEnds transactions |> ignore
+    calculateCurrentCapital transactions |> ignore
     let buysells = calculateYearlyBuySell transactions
     let buySellTemp = buysells |> Array.toList
     calculateYearlyCapital buySellTemp |> ignore
@@ -323,7 +376,7 @@ let calculate (input: Dictionary<string,float>) =
 
     Chart.visualize 
         output 
-        initial 
+        initial
         (totalYearlyProfit  |> Array.toList)
         (yearlyCapital |> Array.toList)
         (portfolioValueWithProfit |> Array.toList)
@@ -332,20 +385,3 @@ let calculate (input: Dictionary<string,float>) =
         (ending |> Array.toList)
         (yearlybuySell |> Array.toList)
     |> ignore
-
-
-
-(*these are the variables i need to generate from this Math.fs file
-axxlet initial = 1000 
-axxlet output = ["timeseries"; "bargraph"; "portfolio"]
-
-xxlet totalYearlyProfit = [34 ; 41; -3; 16; -12; 8]
-axxlet yearlyCapital = [1000; 960; 850; 1070; 990; 590]
-
-xxlet portfolioValueWithProfit = [1000; 960; 850; 1034; 1010; 850]
-
-//StockTransactions
-axxlet stocks = ["GOLD"; "TSLA"; "SLVR"] //MUST BE UPPERCASE
-axxlet starts = [100; 100; 100]
-axxlet ends = [110; 50; 50]
-*)
