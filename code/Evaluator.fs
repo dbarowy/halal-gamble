@@ -12,7 +12,10 @@ let capital = Array.create 1 0
 *)
 let evalBuy (buy: Buy) =
     let key = (buy.stock.ToUpper() + (buy.year.ToString()) + "B")
-    transactions.Add(key, buy.buy)
+    if transactions.ContainsKey(key) then
+        transactions.Item(key) <- transactions.Item(key) + buy.buy
+    else
+        transactions.Add(key, buy.buy)
 
 (* 
 * Evaluates a Sell command and updates the transactions dictionary.
@@ -20,6 +23,9 @@ let evalBuy (buy: Buy) =
 *)
 let evalSell (sell: Sell) = 
     let key = (sell.stock.ToUpper() + (sell.year.ToString()) + "S")
+    if transactions.ContainsKey(key) then
+        transactions.Item(key) <- transactions.Item(key) + sell.sell
+    else
     transactions.Add(key, sell.sell)
 
 (* 

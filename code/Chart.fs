@@ -5,7 +5,7 @@ open Aspose.Pdf.Text
 open System.Diagnostics
 
 
-let years = [2015; 2016; 2017; 2018; 2019; 2020]
+let years = ["2015"; "2016"; "2017"; "2018"; "2019"; "2020"]
 
 (*
     Generates a time series chart based on yearly capital and portfolio value.
@@ -105,14 +105,14 @@ let drawPortfolio  (initial: float) (totalYearlyProfit: float list) (yearlyCapit
 
         "Your Stock Transactions: \n\n" +
         "Stock: " + string stocks[0] + "\n" +
-        "Start: $" + string starts[0] + "\n" +
-        "End: $" + string ends[0] + "\n\n" +
+        "Bought Total: $" + string starts[0] + "\n" +
+        "Sold Total: $" + string ends[0] + "\n\n" +
         "Stock: " + string stocks[1] + "\n" +
-        "Start: $" + string starts[1] + "\n" +
-        "End: $" + string ends[1] + "\n\n" +
+        "Bought Total: $" + string starts[1] + "\n" +
+        "Sold Total: $" + string ends[1] + "\n\n" +
         "Stock: " + string stocks[2] + "\n" +
-        "Start: $" + string starts[2] + "\n" +
-        "End: $" + string ends[2] + "\n\n"
+        "Bought Total: $" + string starts[2] + "\n" +
+        "Sold Total: $" + string ends[2] + "\n\n"
 
 
     let footer = "Portfolio generated electronically by Halal Gambler at " + string date + "\n\n "

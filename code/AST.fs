@@ -17,8 +17,8 @@ module AST
     <graph> ::= bargraph | timeseries | portfolio
 *)
 
-type Buy = {stock: string; buy: int; year: int}
-type Sell = {stock: string; sell: int; year: int}
+type Buy = {stock: string; buy: float; year: int}
+type Sell = {stock: string; sell: float; year: int}
 type AddCapital = {initial: string; amount: int; year: int}
 
 type Command = 
