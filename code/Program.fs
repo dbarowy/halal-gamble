@@ -22,7 +22,17 @@ let main argv =
         0
     | None -> 
         printfn "Invalid Stock Transations, please try again."
+        usage ()
         1
+
+
+(*
+Things to ask dan
+- semantics specification (not sre what to put on it)
+- test suite??
+- checklist number k (does the welcome and the usage message suffice?)
+- checklist o, running on project level / solution level?
+*)
 
 
 (*

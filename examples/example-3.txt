@@ -1,20 +1,20 @@
-dotnet run
-
 start
-initialCapital(150)
-buy(GOLD, 50)
-buy(TSLA, 50)
+addcapital(1000)
+buy(GOLD, 25)
+buy(SLVR, 25)
+buy(TSLA, 25)
 next
-sell(GOLD, 50)
-sell(TSLA, 50) 
+buy(GOLD, 25)
+sell(SLVR, 25)
+buy(TSLA, 25)
 next
-buy(SLVER, 50)
-buy(TSLA, 50)
+buy(GOLD, 25)
+buy(SLVR, 25)
+sell(TSLA, 25)
 next
-next
-next
-sell(SLVER, 50)
-sell(TSLA, 50)
-graph(TimeSeries)
-result(PortfolioStatement)
+sell(GOLD, 75)
+sell(SLVR, 25)
+sell(TSLA, 25)
+output(portfolio)
+output(timeseries)
 exit

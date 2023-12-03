@@ -1,19 +1,17 @@
-dotnet run
-
 start
-initialCapital(100)
+addcapital(1000)
 buy(GOLD, 25)
 next
 sell(GOLD, 25)
 buy(SLVR, 70)
 next
-sell(SLVR, 70)
-next
+sell(SLVR, 20)
 buy(SLVR, 50)
 next
-sell(SLVR,50)
+sell(SLVR,100)
 buy(GOLD,50)
-next
 buy(GOLD, 50)
-graph(BarGraph)
+output(bargraph)
+output(timeseries)
+output(portfolio)
 exit

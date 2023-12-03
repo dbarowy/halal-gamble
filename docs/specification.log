@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  1 DEC 2023 02:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.9) (preloaded format=pdflatex 2023.9.28)  2 DEC 2023 23:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1003,12 +1003,18 @@ Package hyperref Info: Link coloring OFF on input line 56.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--69
+Underfull \hbox (badness 10000) in paragraph at lines 64--67
 
  []
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
-8.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 7
+1.
+(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
+4.
+
 (C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -1016,79 +1022,40 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 shr/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 ] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 186--190
-
- []
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
-90.
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-[3] [4]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 256
-.
-
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 256
-.
-
-(C:\Users\tashr\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 255--257
+Underfull \hbox (badness 10000) in paragraph at lines 156--160
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--278
-
+Overfull \hbox (406.24498pt too wide) in paragraph at lines 189--189
+[]    \OT1/pcr/m/n/10 <command> ::= buy(<stock>, <transactionAmount>, <year>) |
+ sell(<stock>, <transactionAmount>, <year>) | addcapital(<transactionAmount>, <
+year>)[] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 282--284
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 289--291
-
- []
-
-[5] [6] (specification.aux)
+[3] [4] [5] [6] [7] (specification.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-
-
-Package rerunfilecheck Warning: File `specification.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `specification.out':
-(rerunfilecheck)             Before: 52846303AECD2FB3D3964F257D2C63C2;760
-(rerunfilecheck)             After:  C3EE15E1B7D3596E122A484B858C3F8E;798.
+Package rerunfilecheck Info: File `specification.out' has not changed.
+(rerunfilecheck)             Checksum: C3EE15E1B7D3596E122A484B858C3F8E;798.
  ) 
 Here is how much of TeX's memory you used:
- 31708 strings out of 475248
- 695651 string characters out of 5757813
- 1935801 words of memory out of 5000000
- 52744 multiletter control sequences out of 15000+600000
- 568074 words of font info for 57 fonts, out of 8000000 for 9000
+ 31684 strings out of 475248
+ 695116 string characters out of 5757813
+ 1933801 words of memory out of 5000000
+ 52725 multiletter control sequences out of 15000+600000
+ 566375 words of font info for 49 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 98i,11n,103p,1620b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/symbols/msam10.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/urw/courier/ucrr8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/
-type1/urw/times/utmb8a.pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/
-type1/urw/times/utmr8a.pfb>
-Output written on specification.pdf (6 pages, 88242 bytes).
+ 98i,11n,103p,1620b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.
+pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.
+pfb><C:/Users/tashr/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.
+pfb>
+Output written on specification.pdf (7 pages, 77113 bytes).
 PDF statistics:
- 93 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
+ 97 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
