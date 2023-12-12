@@ -41,7 +41,7 @@ let drawBargraph (stocks: string list) (starts: float list) (ends: float list) =
     let bargraph = 
         [
             Chart.Column (starts, stocks, Name="Purchased Stock");
-            Chart.Column (ends, stocks, Name="Result Stock w/ Profit/Loss")
+            Chart.Column (ends, stocks, Name="Sold Stock")
         ]
         |> Chart.combine
         |> Chart.withTitle "Bar Graph of Individual Stock Transactions (2015-2020)"
@@ -187,6 +187,7 @@ let visualize (output: string list) (initial: float) (totalYearlyProfit: float l
 
     if List.contains "portfolio" output then
         drawPortfolio initial totalYearlyProfit yearlyCapital portfolioValueWithProfit stocks starts ends
+    
 
     if List.contains "timeseries" output && List.contains "bargraph" output then
         let combinedChart = [drawTimeseries yearlyCapital portfolioValueWithProfit; drawBargraph stocks starts ends] |> Chart.Grid(2, 1)
@@ -202,6 +203,11 @@ let visualize (output: string list) (initial: float) (totalYearlyProfit: float l
         let barGraphChart = drawBargraph stocks starts ends
         barGraphChart |> Chart.show
         barGraphChart |> Chart.saveHtml fullPath
+
+
+    elif List.contains "portfolio" output then
+        printfn "Portfolio generated successfully to the folder: %s" parentDir
+        exit 0
 
 
     else

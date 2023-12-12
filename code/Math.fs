@@ -70,30 +70,11 @@ let rates = dict [
 ]
 let years = ["2016"; "2017"; "2018"; "2019"; "2020"]
 
-//-----------------Evaluated Variables-----------------//
 
-// let transactionsx = dict [
-//     "GOLD2016B", 40
-//     "GOLD2018S", 40
-//     "SLVR2016B", 100
-//     "SLVR2017B", 100
-//     "SLVR2020S", 150
-//     "TSLA2016B", 100
-//     "TSLA2017B", 100
-//     "TSLA2018B", 100
-//     "TSLA2019B", 100
-//     "TSLA2020S", 400
-//     "portfolio", 1
-//     "bargraph", 1
-//     "timeseries", 1
-// ]
-
-// let transactions = transactionsx |> Seq.map (fun kvp -> (kvp.Key, float(kvp.Value))) |> Seq.toList
 let transactions = Evaluator.transactions |> Seq.map (fun kvp -> (kvp.Key, float(kvp.Value))) |> Seq.toList
 let initial = float(Evaluator.capital[0])
 let currentCapital = Array.create 1 initial
 
-//-----------------Calculated Variables-----------------//
 let mutable output = []
 let yearlyCapital = Array.create 6 0.0
 yearlyCapital[0] <- initial
@@ -102,7 +83,7 @@ let totalYearlyProfit = Array.create 6 0.0
 let portfolioValueWithProfit = Array.create 6 0.0
 portfolioValueWithProfit[0] <- initial
 
-//StockTransactions
+
 let stocksIndividual : IDictionary<string, float[]> = dict [
     "GOLDB", Array.create 5 0.0
     "GOLDS", Array.create 5 0.0
@@ -247,8 +228,6 @@ let rec calculatePortfolioValueWithProfit years =
 
 
 
-//-----------------Progress Functions-----------------//
-
 (*
     Calculates the total yearly profit from stock transactions.
     @param years: List of years.
@@ -278,54 +257,6 @@ let rec calculateTotalYearlyProfit years =
         totalYearlyProfit[index + 1] <- goldProfit + slvrProfit + tslaProfit
 
         calculateTotalYearlyProfit ys
-
-
-
-
-
-
-
-let rec calculateTotalYearlyProfit2 years =
-    match years with
-    | [] -> totalYearlyProfit
-    | y::ys ->
-        let index = int(y) - 2016
-
-        //How much sold every year
-        let gold = stocksIndividual["GOLDS"][index]
-        let slvr = stocksIndividual["SLVRS"][index]
-        let tsla = stocksIndividual["TSLAS"][index]
-        // printfn "%A" y
-        // printfn "GOld: %A" gold
-        // printfn "SLVR: %A" slvr
-        // printfn "TSLA: %A" tsla
-  
-        //but i cant calcualte rates from only previous years to curent year. i have to consider when the stock was bought and what if it awas bought in multiple steps
-        let goldRate = rates["GOLD" + (string(int(y) - 1)) + y]
-        let slvrRate = rates["SLVR" + (string(int(y) - 1)) + y]
-        let tslaRate = rates["TSLA" + (string(int(y) - 1)) + y]
-
-        // printfn "GOLD RATE: %A" goldRate
-        // printfn "SLVR RATE: %A" slvrRate
-        // printfn "TSLA RATE: %A" tslaRate
-
-        let goldProfit = float(gold) * goldRate
-        let slvrProfit = float(slvr) * slvrRate
-        let tslaProfit = float(tsla) * tslaRate
-
-        // printfn "%A" goldProfit
-        // printfn "%A" slvrProfit
-        // printfn "%A" tslaProfit
-
-        profitIndividual["GOLD"][0] <- profitIndividual["GOLD"][0] + goldProfit
-        profitIndividual["SLVR"][0] <- profitIndividual["SLVR"][0] + slvrProfit
-        profitIndividual["TSLA"][0] <- profitIndividual["TSLA"][0] + tslaProfit
-        totalYearlyProfit[index + 1] <- goldProfit + slvrProfit + tslaProfit
-        calculateTotalYearlyProfit2 ys
-
-
-
-
 
 
 
